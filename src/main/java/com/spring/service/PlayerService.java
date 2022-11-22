@@ -54,6 +54,10 @@ public class PlayerService  {
                     player.getEmail()));
         }
 //        playerDTOS.stream().forEach(System.out::println);
+
+        players.stream().map((Player player)-> new PlayerDTO(player.getId(),
+                player.getFirstName()+ " "+ player.getLastName(), player.getEmail())).collect(Collectors.toList())
+                .forEach(System.out::println);
         return playerDTOS;
 
 //        return ((List<Player>) playerRepo
