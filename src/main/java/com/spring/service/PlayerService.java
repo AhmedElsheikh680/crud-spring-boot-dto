@@ -35,19 +35,25 @@ public class PlayerService  {
 //    @Override
 //
     public List<PlayerDTO> findAll() {
+
 //        PlayerDTO playerDTO = new PlayerDTO();
 //        Player player = new Player();
 //        playerDTO.setFullName(player.getFirstName()+ " "+player.getLastName());
 
         List<Player> players = playerRepo.findAll();
         List<PlayerDTO> playerDTOS = new ArrayList<>();
-        for (Player player : players) {
-            PlayerDTO playerDTO = new PlayerDTO();
-            playerDTO.setId(player.getId());
-            playerDTO.setFullName(player.getFirstName() + " " + player.getLastName());
-            playerDTO.setEmail(player.getEmail());
-            playerDTOS.add(playerDTO);
+//        for (Player player : players) {
+//            PlayerDTO playerDTO = new PlayerDTO();
+//            playerDTO.setId(player.getId());
+//            playerDTO.setFullName(player.getFirstName() + " " + player.getLastName());
+//            playerDTO.setEmail(player.getEmail());
+//            playerDTOS.add(playerDTO);
+//        }
+        for(Player player: players){
+            playerDTOS.add(new PlayerDTO(player.getId(), player.getFirstName()+ " "+ player.getLastName(),
+                    player.getEmail()));
         }
+//        playerDTOS.stream().forEach(System.out::println);
         return playerDTOS;
 
 //        return ((List<Player>) playerRepo
